@@ -7,7 +7,7 @@ function addProductToCart(product, cart = 0) {
 					priceInCents: priceInCents,
 					quantity: 1,
 					};
-		cart = newCartItem;
+		cart = newCartItem; //create the new cart
 		return cart;
 	}
 	for(let cartItem in cart){ //if item already exists in cart, increase quantity
@@ -21,20 +21,20 @@ function addProductToCart(product, cart = 0) {
 					priceInCents: priceInCents,
 					quantity: 1,
 				};
-				return cart = {...cart, ...newCartItem};
+				return cart = {...cart, ...newCartItem}; //concat existing cart with new cart item
 		}
 	}
 }
 
-function printablePrice(priceInCents) {
+function printablePrice(priceInCents) {  //format price with fixed decimal to two places
   const amount = (priceInCents / 100).toFixed(2);
   return `$${amount}`;
 }
 
 function printReceipt(cart) {
   let buildString = '';
-  let totalWithQuantity = 0;
-	if(Object.keys(cart).length === 0) return null;
+	//if cart is empty - object.keys returns array of keys.  if 0, cart is empty
+	if(Object.keys(cart).length === 0) return null; 
   for(let cartItem in cart){
     let item = cart[cartItem];
     priceFormatted = printablePrice(item.quantity * item.priceInCents);
@@ -43,11 +43,11 @@ function printReceipt(cart) {
   return buildString += ('Total: ' + printablePrice(calculateTotal(cart)));
 }
 
-function calculateTotal(cart) {
+function calculateTotal(cart) { 
 	let total = 0;
   for(let cartItem in cart){
 		let item = cart[cartItem];
-		total += (item.quantity * item.priceInCents);
+		total += (item.quantity * item.priceInCents); //multiply quantity of items with their price
   }
 	return total;
 }
