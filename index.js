@@ -65,8 +65,8 @@ const cart = {
 }
 
 const product = {
-	name: 'Gooder Icecream',
-	priceInCents: 4,
+	name: 'Better Icecream',
+	priceInCents: 30,
 	quantity: 1,
 };
 
